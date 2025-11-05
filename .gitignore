@@ -4,7 +4,7 @@ node_modules/
 
 # Configuración
 .env
-
+.env.example
 # Archivos subidos
 uploads/*
 !uploads/.gitkeep

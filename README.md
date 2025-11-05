@@ -428,7 +428,7 @@ Diseño de base de datos eficiente
 
 ## **🔧 Archivos Adicionales**
 
-### **.env.example**
+### **.env**
 
 ```env
 # Base de datos
