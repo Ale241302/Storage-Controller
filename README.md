@@ -39,19 +39,13 @@ Sistema web de gestión de archivos con control de cuotas, validación de extens
 git clone https://github.com/tuusuario/storage-controller.git
 cd storage-controller
 
-text
-
 ### **Paso 2: Instalar dependencias**
 
 composer install
 
-text
-
 ### **Paso 3: Configurar variables de entorno**
 
 cp .env.example .env
-
-text
 
 Editar `.env` con tus credenciales:
 
@@ -70,8 +64,6 @@ APP_URL=http://localhost:8000
 Cuota global (en MB)
 GLOBAL_QUOTA_MB=300
 
-text
-
 ### **Paso 4: Crear la base de datos**
 
 Conectar a PostgreSQL
@@ -81,13 +73,9 @@ Crear BD
 CREATE DATABASE storage_controller;
 \q
 
-text
-
 ### **Paso 5: Ejecutar el setup SQL**
 
 psql -U postgres -d storage_controller -f database/setup.sql
-
-text
 
 **Salida esperada:**
 CREATE TABLE
@@ -96,14 +84,25 @@ CREATE TABLE
 INSERT 0 2
 Database setup complete!
 
-text
+### **Paso 6: Crear carpetas necesarias**
 
-### **Paso 6: Crear carpeta de uploads**
-
+Crear carpeta de uploads (raíz del proyecto)
 mkdir -p uploads
 chmod 755 uploads
 
-text
+Crear carpeta de cache (dentro de app)
+mkdir -p app/cache
+chmod 755 app/cache
+
+Crear carpeta de logs (raíz del proyecto)
+mkdir -p logs
+chmod 755 logs
+
+**En Windows (Git Bash/CMD):**
+
+mkdir uploads
+mkdir app\cache
+mkdir logs
 
 ### **Paso 7: Iniciar el servidor**
 
@@ -112,7 +111,6 @@ php -S localhost:8000 -t public
 
 Opción 2: Apache/Nginx
 Configurar el DocumentRoot a /ruta/proyecto/public
-text
 
 Acceder a: [**http://localhost:8000**](http://localhost:8000)
 
@@ -197,6 +195,7 @@ Framework CSS ligero que permite:
 
 storage-controller/
 ├── app/
+│ ├── cache/ # Caché de Phalcon/Volt
 │ ├── controllers/ # Controladores (Admin, File, Auth)
 │ │ ├── AdminController.php
 │ │ ├── FileController.php
@@ -237,8 +236,6 @@ storage-controller/
 ├── .gitignore
 ├── composer.json
 └── README.md
-
-text
 
 ---
 
@@ -311,8 +308,6 @@ users ──┬── user_groups ──── groups ──── group_quotas
 quota_settings (tabla global)
 forbidden_extensions (tabla global)
 
-text
-
 ### **Tablas Principales**
 
 | Tabla                  | Descripción                              |
@@ -333,8 +328,6 @@ text
 
 tail -f logs/error.log
 
-text
-
 ### **Ver logs de PostgreSQL**
 
 Linux
@@ -343,23 +336,17 @@ tail -f /var/log/postgresql/postgresql-\*.log
 macOS (Homebrew)
 tail -f /usr/local/var/log/postgres.log
 
-text
-
 ### **Test de upload con cURL**
 
 curl -X POST http://localhost:8000/file/upload
 -F "file=@test.txt"
 -b "PHPSESSID=tu_session_id"
 
-text
-
 ### **Reiniciar base de datos**
 
 psql -U postgres -c "DROP DATABASE storage_controller;"
 psql -U postgres -c "CREATE DATABASE storage_controller;"
 psql -U postgres -d storage_controller -f database/setup.sql
-
-text
 
 ---
 
@@ -373,7 +360,6 @@ text
 ServerName storage.example.com
 DocumentRoot /var/www/storage-controller/public
 
-text
 <Directory /var/www/storage-controller/public>
 Options -Indexes +FollowSymLinks
 AllowOverride All
@@ -385,7 +371,6 @@ CustomLog ${APACHE_LOG_DIR}/storage-access.log combined
 </VirtualHost> ```
 Nginx (/etc/nginx/sites-available/storage-controller):
 
-text
 server {
 listen 80;
 server_name storage.example.com;
@@ -409,11 +394,11 @@ root /var/www/storage-controller/public;
     }
 
 } 2. Configurar permisos
-text
+
 sudo chown -R www-data:www-data /var/www/storage-controller
 sudo chmod -R 755 /var/www/storage-controller
 sudo chmod -R 775 uploads 3. Cambiar .env a producción
-text
+
 APP_ENV=production
 APP_DEBUG=false
 📄 Licencia
@@ -438,8 +423,6 @@ Seguridad en gestión de archivos
 Vanilla JavaScript moderno
 
 Diseño de base de datos eficiente
-
-text
 
 ---
 
@@ -467,7 +450,7 @@ GLOBAL_QUOTA_MB=300
 LOG_PATH=logs/error.log
 LOG_LEVEL=debug
 .gitignore
-text
+
 # Dependencias
 vendor/
 node_modules/
