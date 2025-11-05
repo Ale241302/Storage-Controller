@@ -1,0 +1,33 @@
+# Dependencias
+vendor/
+node_modules/
+
+# Configuración
+.env
+
+# Archivos subidos
+uploads/*
+!uploads/.gitkeep
+
+# Logs
+logs/*
+!logs/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Caché
+cache/*
+!cache/.gitkeep
+
+# Temp
+tmp/*
+!tmp/.gitkeep
