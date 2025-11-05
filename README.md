@@ -17,7 +17,7 @@ Sistema web de gestión de archivos con control de cuotas, validación de extens
 
 ## 🛠️ Stack Tecnológico
 
-- **Backend**: Phalcon 5.0+ (PHP 8.1+)
+- **Backend**: Phalcon 3.4.5+ (PHP 8.1+)
 - **Frontend**: Vanilla JavaScript (ES6+) + Bootstrap 5
 - **Base de Datos**: PostgreSQL 12+
 - **Servidor**: Apache/Nginx o PHP Built-in Server
@@ -60,7 +60,7 @@ DB_HOST=localhost
 DB_PORT=5432
 DB_NAME=storage_controller
 DB_USER=postgres
-DB_PASSWORD=tu_contraseña
+DB_PASSWORD=su_contraseña
 
 Aplicación
 APP_ENV=development
