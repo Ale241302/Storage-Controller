@@ -436,7 +436,7 @@ DB_HOST=localhost
 DB_PORT=5432
 DB_NAME=storage_controller
 DB_USER=postgres
-DB_PASSWORD=
+DB_PASSWORD=su_contraseña
 
 # Aplicación
 APP_ENV=development
@@ -484,24 +484,5 @@ cache/*
 # Temp
 tmp/*
 !tmp/.gitkeep
-🚀 Comandos para GitHub
-bash
-# 1. Inicializar repositorio
-git init
 
-# 2. Agregar archivos
-git add .
-
-# 3. Commit inicial
-git commit -m "Initial commit: Storage Controller complete setup"
-
-# 4. Crear repositorio en GitHub (desde web)
-# https://github.com/new
-
-# 5. Agregar remote
-git remote add origin https://github.com/tuusuario/storage-controller.git
-
-# 6. Push a GitHub
-git branch -M main
-git push -u origin main
 ```
